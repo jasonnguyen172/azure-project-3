@@ -63,9 +63,21 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* |   Basic, 1 vCore(s), 5 GB  |      30.38      |
+| *Azure Service Bus*   |    Basic    |   0.05           |
+| *Azure Storage Account* | Standard |    19.89      |
+| *App service* | Free |    0      |
+| *Azure Function* | Consumption |    0      |
+| *Sendgrid SaaS* | Free  |    0      |
+Total Cost: $50.32 
 
 ## Architecture Explanation
 This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+
+For the migration of web application, I chose to the Azure Web App and Azure Function via the Service Bus queue message because of many reason:
+   - The Azure Web App is compatible with the size of the web application, it is a small app with not much logic and database. Besides, it cheaper and easier to setup. There is no demand for installing specific software further so this Cons does not impact.
+   - The Azure Function also can trigger event via Azure Service Bus, I supported many languages (C#, F#, JavaScript, Java, Python...) and it is pay-per-use to save the cost 
+
+
+
+
